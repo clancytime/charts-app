@@ -1,0 +1,8 @@
+body {
+	background: white;
+}
+
+.gridster li {
+	background: #F0E8F7;
+	list-style-type: none;
+}

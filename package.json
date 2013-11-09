@@ -1,0 +1,37 @@
+{
+    "name": "chart",
+    "description": "Configurable Chart viewer",
+    "version": "0.1.0",
+    "private": true,
+    "author": "Shane Solnosky",
+    "engines": {
+        "node": "0.10.x",
+        "npm": "1.2.x"
+    },
+    "scripts": {
+        "start": "node node_modules/grunt-cli/bin/grunt",
+        "test": "node node_modules/grunt-cli/bin/grunt test",
+        "postinstall": "bower install"
+    },
+    "dependencies": {
+        "express": "latest",
+        "jade": "latest",
+        "underscore": "latest",
+        "mean-logger": "latest",
+        "view-helpers": "latest",
+        "forever": "latest",
+        "bower": "latest",
+        "grunt": "latest",
+        "grunt-cli": "latest",
+        "grunt-env": "latest"
+    },
+    "devDependencies": {
+        "supertest": "latest",
+        "should": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-nodemon": "latest",
+        "grunt-concurrent": "latest",
+        "grunt-mocha-test": "latest"
+    }
+}
