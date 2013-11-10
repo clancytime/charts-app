@@ -24,6 +24,7 @@ module.exports = function(passport) {
             passwordField: 'password'
         },
         function(email, password, done) {
+            console.log("Signing in user: " + email);
             User.findOne({
                 email: email
             }, function(err, user) {
@@ -31,11 +32,13 @@ module.exports = function(passport) {
                     return done(err);
                 }
                 if (!user) {
+                    console.log("No user found!");
                     return done(null, false, {
                         message: 'Unknown user'
                     });
                 }
                 if (!user.authenticate(password)) {
+                    console.log("Invalid password given");
                     return done(null, false, {
                         message: 'Invalid password'
                     });

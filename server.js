@@ -6,6 +6,7 @@ var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
     config = require('./config/config'),
     mongoose = require('mongoose');
 
+
 var db = mongoose.connect(config.db);
 
 var models_path = __dirname + '/app/models';

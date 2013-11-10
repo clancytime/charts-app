@@ -1,5 +1,5 @@
 {
-    "db": "mongodb://localhost/mean-dev",
+    "db": "mongodb://localhost/charts-dev",
     "app": {
         "name": "Charts"
     }
