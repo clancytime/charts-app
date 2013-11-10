@@ -15,10 +15,15 @@ exports.authCallback = function(req, res, next) {
  * Show login form
  */
 exports.signin = function(req, res) {
-    res.render('users/signin', {
-        title: 'Signin',
-        message: req.flash('error')
-    });
+    if (req.isAuthenticated()){
+        res.redirect('/');
+    }
+    else {
+        res.render('users/signin', {
+            title: 'Signin',
+            message: req.flash('error')
+        });
+    }
 };
 
 /**

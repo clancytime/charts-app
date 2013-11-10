@@ -6,3 +6,30 @@ body {
 	background: #F0E8F7;
 	list-style-type: none;
 }
+
+.chart-form {
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	z-index: 900;
+	display: none;
+	background: white;
+
+	-webkit-box-shadow:  0px 0px 4px 5px #00000;
+    box-shadow:  0px 0px 4px 5px #00000;
+
+    -webkit-border-radius: 4px;
+	border-radius: 4px; 
+}
+
+.chart-form form {
+	margin: 10px 50px;
+}
+
+#mask {
+	position: absolute;
+	background: black;
+	opacity: 0.3;
+	display: none;
+	z-index: 500;
+}
