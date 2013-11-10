@@ -1,3 +1,8 @@
 exports.render = function(req, res) {
-	res.render('index', {});
-}
+	 if (req.isAuthenticated()) {
+		res.render('index', { title: 'Home' });
+	}
+	else {
+		res.redirect('/signin');
+	}
+};

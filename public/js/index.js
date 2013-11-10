@@ -2,8 +2,8 @@ var gridster;
 
 $(function(){
 
-	gridster = $(".gridster ul").gridster({
-	  widget_base_dimensions: [250, 250],
+	var gridster = $(".gridster ul").gridster({
+	  widget_base_dimensions: [100, 100],
 	  widget_margins: [10, 10],
 	  resize: {
 	    enabled: true

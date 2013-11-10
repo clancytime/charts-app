@@ -1,8 +1,10 @@
 var express = require('express'),
+    mongoStore = require('connect-mongo')(express),
+    flash = require('connect-flash'),
 	helpers = require('view-helpers'),
 	config = require('./config');
 
-module.exports = function(app) {
+module.exports = function(app, passport, db) {
 	app.set('showStackError', true);
 
 	app.locals.pretty = true;
@@ -33,8 +35,24 @@ module.exports = function(app) {
         app.use(express.bodyParser());
         app.use(express.methodOverride());
 
+        //express/mongo session storage
+        app.use(express.session({
+            secret: 'Charts',
+            store: new mongoStore({
+                db: db.connection.db,
+                collection: 'sessions'
+            })
+        }));
+
+        //connect flash for flash messages
+        app.use(flash());
+
         //dynamic helpers
         app.use(helpers(config.app.name));
+
+        //use passport session
+        app.use(passport.initialize());
+        app.use(passport.session());
 
         //routes should be at the last
         app.use(app.router);
