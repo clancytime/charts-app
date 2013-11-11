@@ -4,6 +4,7 @@
     "dependencies": {
         "gridster": "0.2.1",
         "Chart.js": "*",
-        "bootstrap": "3.0.2"
+        "bootstrap": "3.0.2",
+        "socket.io-client": "*"
     }
 }

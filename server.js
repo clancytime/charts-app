@@ -36,7 +36,9 @@ require('./config/routes')(app, passport);
 
 //Start the app by listening on <port>
 var port = process.env.PORT || config.port;
-app.listen(port);
+var io = require('socket.io').listen(app.listen(port));
+
+require('./config/socketio')(io, db);
 console.log('Express app started on port ' + port);
 
 //expose app
