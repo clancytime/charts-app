@@ -22,12 +22,19 @@ $(function(){
 	  widget_margins: [10, 10],
 	  resize: {
 	    enabled: true,
+	    start: function(e, ui, $widget) {
+	    	var grid = $widget[0].className.split(" ")[0];
+	  		if (grid != "gs-w") {
+	  			$('#' + grid).css({ 'opacity': 0.3});
+	  		}
+	    },
 	    stop: function(e, ui, $widget) {
 
 	  		var grid = $widget[0].className.split(" ")[0];
 	  		if (grid != "gs-w") {
 	  			$('#' + grid).attr('height', ($widget[0].clientHeight - 50));
 				$('#' + grid).attr('width', ($widget[0].clientWidth - 50));
+				$('#' + grid).css({ 'opacity': 1.0});
 
 				addCharttoGrid(grid, $widget, "Pie");
 	  		}
