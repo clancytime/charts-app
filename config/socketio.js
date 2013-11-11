@@ -10,18 +10,20 @@ module.exports = function(io, mongoose) {
 			var issues = false;
 
 			for (i in grids) {
-				if (grid[i].chartName != 'gs-w') {
+				if (grids[i].chartName != 'gs-w') {
 					grid = new Grid({
-						chartName: grid[i].chartName,
-						col: grid[i].col,
-						row: grid[i].row,
-						size_x: grid[i].size_x,
-						size_y: grid[i].size_y
+						chartName: grids[i].chartName,
+						col: grids[i].col,
+						row: grids[i].row,
+						size_x: grids[i].size_x,
+						size_y: grids[i].size_y
 					});
 					grid.save(function(err) {
-						issues = true;
-						socket.emit(errors, err);
-						console.log("Errors Saving grids");
+						if (err) {
+							issues = true;
+							socket.emit('errors', err);
+							console.log("Errors Saving grids");
+						}
 					});
 				}
 				if (issues) break;
@@ -30,6 +32,15 @@ module.exports = function(io, mongoose) {
 			if (!issues) {
 				socket.emit('completed');
 			}
+		});
+
+		socket.on('remove grids', function() {
+			Grid.find(function(err, grids) {
+				for (i in grids) {
+					grids[i].remove(function(err, grid) {});
+				}
+			});
+			socket.emit('completed');
 		});
 	});
 };
